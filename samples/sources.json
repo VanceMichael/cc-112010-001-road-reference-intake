@@ -380,7 +380,7 @@
               "activeIssuer": "hill",
               "priorIssuer": "river",
               "full": "/catalog/north",
-              "after": "h1",
+              "after": "h2",
               "updates": "/changes/hill"
             },
             {
@@ -404,7 +404,7 @@
           "area": "north",
           "through": {
             "river": 72,
-            "hill": 1
+            "hill": 2
           },
           "entries": [
             {
@@ -442,7 +442,7 @@
           "area": "north",
           "through": {
             "river": 72,
-            "hill": 1
+            "hill": 2
           },
           "entries": [
             {
@@ -500,8 +500,36 @@
         "body": {
           "area": "north",
           "issuer": "hill",
+          "records": [
+            {
+              "seq": 2,
+              "at": "2026-11-20T08:20:00+08:00",
+              "binding": {
+                "binding": "B1-hill-K20",
+                "point": "P-21",
+                "code": "K20",
+                "issuer": "hill",
+                "purpose": "道路救援",
+                "markerKm": 20.7,
+                "action": "bind",
+                "replacementCode": null
+              }
+            }
+          ],
+          "nextCursor": "h2"
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/changes/hill?after=h2",
+        "body": {
+          "area": "north",
+          "issuer": "hill",
           "records": [],
-          "nextCursor": "h1"
+          "nextCursor": "h2"
         },
         "status": 200,
         "method": "GET",
@@ -527,9 +555,23 @@
                 "action": "bind",
                 "replacementCode": "L42"
               }
+            },
+            {
+              "seq": 2,
+              "at": "2026-11-20T08:20:00+08:00",
+              "binding": {
+                "binding": "B1-hill-K20",
+                "point": "P-21",
+                "code": "K20",
+                "issuer": "hill",
+                "purpose": "道路救援",
+                "markerKm": 20.7,
+                "action": "bind",
+                "replacementCode": null
+              }
             }
           ],
-          "nextCursor": "h1"
+          "nextCursor": "h2"
         },
         "status": 200,
         "method": "GET",
@@ -539,14 +581,14 @@
     ],
     [
       {
-        "path": "/changes/hill?after=h1",
+        "path": "/changes/hill?after=h2",
         "body": {
           "area": "north",
           "issuer": "hill",
           "records": [
             {
-              "seq": 2,
-              "at": "2026-11-20T08:20:00+08:00",
+              "seq": 3,
+              "at": "2026-11-20T06:20:00+08:00",
               "binding": {
                 "binding": "B1-hill-K19",
                 "point": "P-42",
@@ -559,8 +601,8 @@
               }
             },
             {
-              "seq": 3,
-              "at": "2026-11-20T06:20:00+08:00",
+              "seq": 4,
+              "at": "2026-11-20T07:20:00+08:00",
               "binding": {
                 "binding": "B2-hill-K19",
                 "point": "P-43",
@@ -573,7 +615,7 @@
               }
             }
           ],
-          "nextCursor": "h3"
+          "nextCursor": "h4"
         },
         "status": 200,
         "method": "GET",
@@ -581,12 +623,12 @@
         "headers": {}
       },
       {
-        "path": "/changes/hill?after=h3",
+        "path": "/changes/hill?after=h4",
         "body": {
           "area": "north",
           "issuer": "hill",
           "records": [],
-          "nextCursor": "h3"
+          "nextCursor": "h4"
         },
         "status": 200,
         "method": "GET",
