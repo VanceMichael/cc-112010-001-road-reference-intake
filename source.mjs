@@ -1,6 +1,7 @@
 import { createServer } from 'node:http'
 import { readFile } from 'node:fs/promises'
 import { isDeepStrictEqual } from 'node:util'
+import { fleetSource } from './fleet-source.mjs'
 
 const root = new URL('./samples/', import.meta.url)
 const replay = JSON.parse(await readFile(new URL('sources.json', root), 'utf8'))
@@ -66,6 +67,10 @@ async function sendBinary(req, res, path, asset) {
 
 export function makeSource() {
   let step = 0
+  const exchange = fleetSource(
+    fleet => lookup(0, 'GET', '/fleet/' + fleet + '/directory', null).body,
+    lookup(0, 'GET', '/fleets', null).body,
+  )
 
   return createServer(async (req, res) => {
     try {
@@ -83,6 +88,12 @@ export function makeSource() {
       }
       const body = req.method === 'POST' ? await input(req) : null
 
+      const target = url.pathname.match(/^\/fleet\/([^/]+)\/(directory|receipts|send)$/)
+      if (target) {
+        const { status, content } = exchange({ fleet: target[1], method: req.method,
+          resource: target[2], transmission: url.searchParams.get('transmission'), body, step })
+        return send(res, status, content)
+      }
       const path = normalizedPath(req.url)
       const entry = lookup(step, req.method, path, body)
       const asset = replay.assets?.[path]

@@ -2,140 +2,22 @@
   "rounds": [
     [
       {
-        "path": "/network",
+        "path": "/sources",
         "body": {
-          "axes": [
+          "regions": [
             {
-              "edition": "A",
-              "from": "2026-09-01",
-              "to": "2026-11-02",
-              "road": "N7",
-              "branch": "干线",
-              "direction": "上行",
-              "run": "RA",
-              "anchors": [
-                [
-                  11000,
-                  0
-                ],
-                [
-                  12000,
-                  1000
-                ],
-                [
-                  12500,
-                  1500
-                ]
-              ],
-              "control": [
-                "a0",
-                "a1"
-              ]
+              "area": "north",
+              "activeIssuer": "river",
+              "full": "/catalog/north",
+              "after": "r71",
+              "updates": "/changes/river"
             },
             {
-              "edition": "B",
-              "from": "2026-11-02",
-              "road": "N7",
-              "branch": "干线",
-              "direction": "上行",
-              "run": "RB",
-              "anchors": [
-                [
-                  11000,
-                  0
-                ],
-                [
-                  12500,
-                  1500
-                ]
-              ],
-              "control": [
-                "b0",
-                "b1"
-              ]
-            },
-            {
-              "edition": "B",
-              "from": "2026-11-02",
-              "road": "N7",
-              "branch": "联络线",
-              "direction": "上行",
-              "run": "RX",
-              "anchors": [
-                [
-                  12000,
-                  0
-                ],
-                [
-                  12500,
-                  500
-                ]
-              ],
-              "control": [
-                "x0",
-                "x1"
-              ]
-            },
-            {
-              "edition": "B",
-              "from": "2026-11-02",
-              "road": "N7",
-              "branch": "干线",
-              "direction": "下行",
-              "run": "RL",
-              "anchors": [
-                [
-                  12000,
-                  1000
-                ],
-                [
-                  12500,
-                  500
-                ]
-              ],
-              "control": [
-                "l0",
-                "l1"
-              ]
-            }
-          ],
-          "carry": [
-            {
-              "declaration": "M1",
-              "revision": 1,
-              "oldRun": "RA",
-              "old": [
-                0,
-                1250
-              ],
-              "newRun": "RB",
-              "new": [
-                0,
-                1250
-              ]
-            }
-          ],
-          "surveyRequired": [
-            {
-              "run": "RB",
-              "range": [
-                0,
-                1500
-              ]
-            },
-            {
-              "run": "RX",
-              "range": [
-                0,
-                500
-              ]
-            },
-            {
-              "run": "RL",
-              "range": [
-                500,
-                1000
-              ]
+              "area": "south",
+              "activeIssuer": "city",
+              "full": "/catalog/south",
+              "after": "c30",
+              "updates": "/changes/city"
             }
           ]
         },
@@ -145,16 +27,36 @@
         "headers": {}
       },
       {
-        "path": "/uploads",
+        "path": "/catalog/north",
         "body": {
-          "parts": [
-            "/vehicle/12/a",
-            "/vehicle/12/b",
-            "/vehicle/12/c"
+          "edition": "N6",
+          "area": "north",
+          "through": {
+            "river": 71
+          },
+          "entries": [
+            {
+              "binding": "B0-river-K19",
+              "point": "P-19",
+              "code": "K19",
+              "issuer": "river",
+              "purpose": "道路救援",
+              "markerKm": 19.2,
+              "action": "bind",
+              "replacementCode": null
+            },
+            {
+              "binding": "B0-river-K20",
+              "point": "P-20",
+              "code": "K20",
+              "issuer": "river",
+              "purpose": "道路救援",
+              "markerKm": 20.5,
+              "action": "bind",
+              "replacementCode": null
+            }
           ],
-          "openBoots": [
-            "s8"
-          ]
+          "next": null
         },
         "status": 200,
         "method": "GET",
@@ -162,21 +64,26 @@
         "headers": {}
       },
       {
-        "path": "/vehicle/12/a",
+        "path": "/catalog/south",
         "body": {
-          "vehicle": "12",
-          "boot": "s7",
-          "seq": 1,
-          "kind": "measure",
-          "date": "2026-10-30",
-          "edition": "A",
-          "direction": "上行",
-          "runHint": "RA",
-          "chainage": [
-            11000,
-            12250
+          "edition": "S4",
+          "area": "south",
+          "through": {
+            "city": 30
+          },
+          "entries": [
+            {
+              "binding": "B0-city-K88",
+              "point": "P-88",
+              "code": "K88",
+              "issuer": "city",
+              "purpose": "道路救援",
+              "markerKm": 88.1,
+              "action": "bind",
+              "replacementCode": null
+            }
           ],
-          "roughness": 1.8
+          "next": null
         },
         "status": 200,
         "method": "GET",
@@ -184,16 +91,12 @@
         "headers": {}
       },
       {
-        "path": "/vehicle/12/b",
+        "path": "/changes/river?after=r71",
         "body": {
-          "vehicle": "12",
-          "boot": "s7",
-          "seq": 1,
-          "kind": "position",
-          "controls": [
-            "a0",
-            "a1"
-          ]
+          "area": "north",
+          "issuer": "river",
+          "records": [],
+          "nextCursor": "r71"
         },
         "status": 200,
         "method": "GET",
@@ -201,21 +104,12 @@
         "headers": {}
       },
       {
-        "path": "/vehicle/12/c",
+        "path": "/changes/city?after=c30",
         "body": {
-          "vehicle": "12",
-          "boot": "s8",
-          "seq": 1,
-          "kind": "measure",
-          "date": "2026-11-03",
-          "edition": "B",
-          "direction": "上行",
-          "runHint": "RB",
-          "chainage": [
-            12100,
-            12500
-          ],
-          "roughness": 2.1
+          "area": "south",
+          "issuer": "city",
+          "records": [],
+          "nextCursor": "c30"
         },
         "status": 200,
         "method": "GET",
@@ -223,27 +117,106 @@
         "headers": {}
       },
       {
-        "path": "/dispatch",
+        "path": "/handoffs",
+        "body": [],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/control/jobs",
         "body": [
           {
-            "id": "D-1",
-            "run": "RB",
-            "range": [
-              1250,
-              1500
-            ],
-            "claimedAt": "2026-11-04T09:00:00+08:00"
-          },
-          {
-            "id": "D-2",
-            "run": "RX",
-            "range": [
-              0,
-              500
-            ],
-            "claimedAt": null
+            "job": "R-101",
+            "fleet": "classic",
+            "point": "P-19",
+            "binding": "B0-river-K19",
+            "code": "K19",
+            "status": "dispatched"
           }
         ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/fleets",
+        "body": [
+          {
+            "id": "classic",
+            "key": [
+              "code"
+            ],
+            "issuers": [
+              "river",
+              "hill",
+              "city"
+            ]
+          },
+          {
+            "id": "current",
+            "key": [
+              "issuer",
+              "code",
+              "binding"
+            ],
+            "issuers": [
+              "river",
+              "hill",
+              "city"
+            ]
+          }
+        ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/fleet/classic/directory",
+        "body": {
+          "revision": "L6",
+          "entries": [
+            {
+              "binding": "B0-river-K19",
+              "point": "P-19",
+              "code": "K19",
+              "issuer": "river"
+            },
+            {
+              "binding": "B0-river-K20",
+              "point": "P-20",
+              "code": "K20",
+              "issuer": "river"
+            }
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/fleet/current/directory",
+        "body": {
+          "revision": "M10",
+          "entries": [
+            {
+              "binding": "B0-river-K19",
+              "point": "P-19",
+              "code": "K19",
+              "issuer": "river"
+            },
+            {
+              "binding": "B0-river-K20",
+              "point": "P-20",
+              "code": "K20",
+              "issuer": "river"
+            }
+          ]
+        },
         "status": 200,
         "method": "GET",
         "request": null,
@@ -252,165 +225,24 @@
     ],
     [
       {
-        "path": "/network",
+        "path": "/sources",
         "body": {
-          "axes": [
+          "regions": [
             {
-              "edition": "A",
-              "from": "2026-09-01",
-              "to": "2026-11-02",
-              "road": "N7",
-              "branch": "干线",
-              "direction": "上行",
-              "run": "RA",
-              "anchors": [
-                [
-                  11000,
-                  0
-                ],
-                [
-                  12000,
-                  1000
-                ],
-                [
-                  12500,
-                  1500
-                ]
-              ],
-              "control": [
-                "a0",
-                "a1"
-              ]
+              "area": "north",
+              "activeIssuer": "river",
+              "incomingIssuer": "hill",
+              "full": "/catalog/north",
+              "after": "r71",
+              "updates": "/changes/river",
+              "incomingUpdates": "/changes/hill?after=h0"
             },
             {
-              "edition": "B",
-              "from": "2026-11-02",
-              "road": "N7",
-              "branch": "干线",
-              "direction": "上行",
-              "run": "RB",
-              "anchors": [
-                [
-                  11000,
-                  0
-                ],
-                [
-                  12500,
-                  1500
-                ]
-              ],
-              "control": [
-                "b0",
-                "b1"
-              ]
-            },
-            {
-              "edition": "B",
-              "from": "2026-11-02",
-              "road": "N7",
-              "branch": "联络线",
-              "direction": "上行",
-              "run": "RX",
-              "anchors": [
-                [
-                  12000,
-                  0
-                ],
-                [
-                  12500,
-                  500
-                ]
-              ],
-              "control": [
-                "x0",
-                "x1"
-              ]
-            },
-            {
-              "edition": "B",
-              "from": "2026-11-02",
-              "road": "N7",
-              "branch": "干线",
-              "direction": "下行",
-              "run": "RL",
-              "anchors": [
-                [
-                  12000,
-                  1000
-                ],
-                [
-                  12500,
-                  500
-                ]
-              ],
-              "control": [
-                "l0",
-                "l1"
-              ]
-            }
-          ],
-          "carry": [
-            {
-              "declaration": "M1",
-              "revision": 2,
-              "oldRun": "RA",
-              "old": [
-                0,
-                1000
-              ],
-              "newRun": "RB",
-              "new": [
-                0,
-                1000
-              ]
-            },
-            {
-              "declaration": "M2",
-              "revision": 1,
-              "oldRun": "RA",
-              "old": [
-                1000,
-                1250
-              ],
-              "candidates": [
-                {
-                  "newRun": "RB",
-                  "new": [
-                    1000,
-                    1250
-                  ]
-                },
-                {
-                  "newRun": "RX",
-                  "new": [
-                    0,
-                    250
-                  ]
-                }
-              ]
-            }
-          ],
-          "surveyRequired": [
-            {
-              "run": "RB",
-              "range": [
-                0,
-                1500
-              ]
-            },
-            {
-              "run": "RX",
-              "range": [
-                0,
-                500
-              ]
-            },
-            {
-              "run": "RL",
-              "range": [
-                500,
-                1000
-              ]
+              "area": "south",
+              "activeIssuer": "city",
+              "full": "/catalog/south",
+              "after": "c30",
+              "updates": "/changes/city"
             }
           ]
         },
@@ -420,18 +252,144 @@
         "headers": {}
       },
       {
-        "path": "/uploads",
+        "path": "/changes/river?after=r71",
         "body": {
-          "parts": [
-            "/vehicle/12/a",
-            "/vehicle/12/b",
-            "/vehicle/12/c",
-            "/vehicle/12/d",
-            "/vehicle/12/e",
-            "/vehicle/12/f"
+          "reason": "cursorExpired",
+          "full": "/catalog/north"
+        },
+        "status": 410,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/changes/hill?after=h0",
+        "body": {
+          "area": "north",
+          "issuer": "hill",
+          "records": [
+            {
+              "seq": 1,
+              "at": "2026-11-20T07:20:00+08:00",
+              "binding": {
+                "binding": "B1-hill-K19",
+                "point": "P-42",
+                "code": "K19",
+                "issuer": "hill",
+                "purpose": "道路救援",
+                "markerKm": 42.8,
+                "action": "bind",
+                "replacementCode": "L42"
+              }
+            }
           ],
-          "openBoots": [
-            "s9"
+          "nextCursor": "h1"
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/catalog/north",
+        "body": {
+          "edition": "N7",
+          "area": "north",
+          "through": {
+            "river": 72
+          },
+          "entries": [
+            {
+              "binding": "B0-river-K19",
+              "point": "P-19",
+              "code": "K19",
+              "issuer": "river",
+              "purpose": "道路救援",
+              "markerKm": 19.2,
+              "action": "retire",
+              "replacementCode": null
+            }
+          ],
+          "next": "/catalog/north/N7/p2"
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/catalog/north/N7/p2",
+        "body": {
+          "reason": "editionReplaced",
+          "restart": "/catalog/north"
+        },
+        "status": 409,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/changes/city?after=c30",
+        "body": {
+          "area": "south",
+          "issuer": "city",
+          "records": [
+            {
+              "seq": 31,
+              "at": "2026-11-20T07:20:00+08:00",
+              "binding": {
+                "binding": "B1-city-K89",
+                "point": "P-89",
+                "code": "K89",
+                "issuer": "city",
+                "purpose": "道路救援",
+                "markerKm": 89.4,
+                "action": "bind",
+                "replacementCode": null
+              }
+            }
+          ],
+          "nextCursor": "c31"
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/changes/city?after=c31",
+        "body": {
+          "area": "south",
+          "issuer": "city",
+          "records": [],
+          "nextCursor": "c31"
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      }
+    ],
+    [
+      {
+        "path": "/sources",
+        "body": {
+          "regions": [
+            {
+              "area": "north",
+              "activeIssuer": "hill",
+              "priorIssuer": "river",
+              "full": "/catalog/north",
+              "after": "h1",
+              "updates": "/changes/hill"
+            },
+            {
+              "area": "south",
+              "activeIssuer": "city",
+              "full": "/catalog/south",
+              "after": "c31",
+              "updates": "/changes/city"
+            }
           ]
         },
         "status": 200,
@@ -440,16 +398,37 @@
         "headers": {}
       },
       {
-        "path": "/vehicle/12/d",
+        "path": "/catalog/north",
         "body": {
-          "vehicle": "12",
-          "boot": "s8",
-          "seq": 1,
-          "kind": "position",
-          "controls": [
-            "b0",
-            "b1"
-          ]
+          "edition": "N8",
+          "area": "north",
+          "through": {
+            "river": 72,
+            "hill": 1
+          },
+          "entries": [
+            {
+              "binding": "B0-river-K19",
+              "point": "P-19",
+              "code": "K19",
+              "issuer": "river",
+              "purpose": "道路救援",
+              "markerKm": 19.2,
+              "action": "retire",
+              "replacementCode": null
+            },
+            {
+              "binding": "B1-hill-K19",
+              "point": "P-42",
+              "code": "K19",
+              "issuer": "hill",
+              "purpose": "道路救援",
+              "markerKm": 42.8,
+              "action": "bind",
+              "replacementCode": "L42"
+            }
+          ],
+          "next": "/catalog/north/N8/p2"
         },
         "status": 200,
         "method": "GET",
@@ -457,21 +436,27 @@
         "headers": {}
       },
       {
-        "path": "/vehicle/12/e",
+        "path": "/catalog/north/N8/p2",
         "body": {
-          "vehicle": "12",
-          "boot": "s9",
-          "seq": 1,
-          "kind": "measure",
-          "date": "2026-11-04",
-          "edition": "B",
-          "direction": "上行",
-          "runHint": "RB",
-          "chainage": [
-            11950,
-            12300
+          "edition": "N8",
+          "area": "north",
+          "through": {
+            "river": 72,
+            "hill": 1
+          },
+          "entries": [
+            {
+              "binding": "B0-river-K20",
+              "point": "P-20",
+              "code": "K20",
+              "issuer": "river",
+              "purpose": "道路救援",
+              "markerKm": 20.5,
+              "action": "bind",
+              "replacementCode": null
+            }
           ],
-          "breaks": []
+          "next": null
         },
         "status": 200,
         "method": "GET",
@@ -479,17 +464,34 @@
         "headers": {}
       },
       {
-        "path": "/vehicle/12/f",
+        "path": "/handoffs",
+        "body": [
+          {
+            "area": "north",
+            "outgoing": "river",
+            "last": 72,
+            "incoming": "hill",
+            "first": 1,
+            "approvedAliases": [
+              {
+                "point": "P-42",
+                "code": "L42"
+              }
+            ]
+          }
+        ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/changes/hill?after=h1",
         "body": {
-          "vehicle": "12",
-          "boot": "s9",
-          "seq": 1,
-          "kind": "position",
-          "controls": [
-            "b1",
-            "x0"
-          ],
-          "breaksObserved": true
+          "area": "north",
+          "issuer": "hill",
+          "records": [],
+          "nextCursor": "h1"
         },
         "status": 200,
         "method": "GET",
@@ -497,22 +499,124 @@
         "headers": {}
       },
       {
-        "path": "/network/publication",
+        "path": "/changes/hill?after=h0",
         "body": {
-          "current": "B",
-          "closedBoots": [
-            "s7",
-            "s8"
+          "area": "north",
+          "issuer": "hill",
+          "records": [
+            {
+              "seq": 1,
+              "at": "2026-11-20T07:20:00+08:00",
+              "binding": {
+                "binding": "B1-hill-K19",
+                "point": "P-42",
+                "code": "K19",
+                "issuer": "hill",
+                "purpose": "道路救援",
+                "markerKm": 42.8,
+                "action": "bind",
+                "replacementCode": "L42"
+              }
+            }
           ],
-          "openBoots": [
-            "s9"
-          ],
-          "segments": [
-            "RB",
-            "RX",
-            "RL"
-          ]
+          "nextCursor": "h1"
         },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      }
+    ],
+    [
+      {
+        "path": "/changes/hill?after=h1",
+        "body": {
+          "area": "north",
+          "issuer": "hill",
+          "records": [
+            {
+              "seq": 2,
+              "at": "2026-11-20T08:20:00+08:00",
+              "binding": {
+                "binding": "B1-hill-K19",
+                "point": "P-42",
+                "code": "K19",
+                "issuer": "hill",
+                "purpose": "道路救援",
+                "markerKm": 42.8,
+                "action": "retire",
+                "replacementCode": "L42"
+              }
+            },
+            {
+              "seq": 3,
+              "at": "2026-11-20T06:20:00+08:00",
+              "binding": {
+                "binding": "B2-hill-K19",
+                "point": "P-43",
+                "code": "K19",
+                "issuer": "hill",
+                "purpose": "道路救援",
+                "markerKm": 43.1,
+                "action": "bind",
+                "replacementCode": "L43"
+              }
+            }
+          ],
+          "nextCursor": "h3"
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/changes/hill?after=h3",
+        "body": {
+          "area": "north",
+          "issuer": "hill",
+          "records": [],
+          "nextCursor": "h3"
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/handoffs",
+        "body": [
+          {
+            "area": "north",
+            "outgoing": "river",
+            "last": 72,
+            "incoming": "hill",
+            "first": 1,
+            "approvedAliases": [
+              {
+                "point": "P-43",
+                "code": "L43"
+              }
+            ]
+          }
+        ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/control/jobs",
+        "body": [
+          {
+            "job": "R-101",
+            "fleet": "classic",
+            "point": "P-19",
+            "binding": "B0-river-K19",
+            "code": "K19",
+            "status": "closed"
+          }
+        ],
         "status": 200,
         "method": "GET",
         "request": null,
