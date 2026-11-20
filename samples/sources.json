@@ -1,0 +1,524 @@
+{
+  "rounds": [
+    [
+      {
+        "path": "/network",
+        "body": {
+          "axes": [
+            {
+              "edition": "A",
+              "from": "2026-09-01",
+              "to": "2026-11-02",
+              "road": "N7",
+              "branch": "干线",
+              "direction": "上行",
+              "run": "RA",
+              "anchors": [
+                [
+                  11000,
+                  0
+                ],
+                [
+                  12000,
+                  1000
+                ],
+                [
+                  12500,
+                  1500
+                ]
+              ],
+              "control": [
+                "a0",
+                "a1"
+              ]
+            },
+            {
+              "edition": "B",
+              "from": "2026-11-02",
+              "road": "N7",
+              "branch": "干线",
+              "direction": "上行",
+              "run": "RB",
+              "anchors": [
+                [
+                  11000,
+                  0
+                ],
+                [
+                  12500,
+                  1500
+                ]
+              ],
+              "control": [
+                "b0",
+                "b1"
+              ]
+            },
+            {
+              "edition": "B",
+              "from": "2026-11-02",
+              "road": "N7",
+              "branch": "联络线",
+              "direction": "上行",
+              "run": "RX",
+              "anchors": [
+                [
+                  12000,
+                  0
+                ],
+                [
+                  12500,
+                  500
+                ]
+              ],
+              "control": [
+                "x0",
+                "x1"
+              ]
+            },
+            {
+              "edition": "B",
+              "from": "2026-11-02",
+              "road": "N7",
+              "branch": "干线",
+              "direction": "下行",
+              "run": "RL",
+              "anchors": [
+                [
+                  12000,
+                  1000
+                ],
+                [
+                  12500,
+                  500
+                ]
+              ],
+              "control": [
+                "l0",
+                "l1"
+              ]
+            }
+          ],
+          "carry": [
+            {
+              "declaration": "M1",
+              "revision": 1,
+              "oldRun": "RA",
+              "old": [
+                0,
+                1250
+              ],
+              "newRun": "RB",
+              "new": [
+                0,
+                1250
+              ]
+            }
+          ],
+          "surveyRequired": [
+            {
+              "run": "RB",
+              "range": [
+                0,
+                1500
+              ]
+            },
+            {
+              "run": "RX",
+              "range": [
+                0,
+                500
+              ]
+            },
+            {
+              "run": "RL",
+              "range": [
+                500,
+                1000
+              ]
+            }
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/uploads",
+        "body": {
+          "parts": [
+            "/vehicle/12/a",
+            "/vehicle/12/b",
+            "/vehicle/12/c"
+          ],
+          "openBoots": [
+            "s8"
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/vehicle/12/a",
+        "body": {
+          "vehicle": "12",
+          "boot": "s7",
+          "seq": 1,
+          "kind": "measure",
+          "date": "2026-10-30",
+          "edition": "A",
+          "direction": "上行",
+          "runHint": "RA",
+          "chainage": [
+            11000,
+            12250
+          ],
+          "roughness": 1.8
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/vehicle/12/b",
+        "body": {
+          "vehicle": "12",
+          "boot": "s7",
+          "seq": 1,
+          "kind": "position",
+          "controls": [
+            "a0",
+            "a1"
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/vehicle/12/c",
+        "body": {
+          "vehicle": "12",
+          "boot": "s8",
+          "seq": 1,
+          "kind": "measure",
+          "date": "2026-11-03",
+          "edition": "B",
+          "direction": "上行",
+          "runHint": "RB",
+          "chainage": [
+            12100,
+            12500
+          ],
+          "roughness": 2.1
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/dispatch",
+        "body": [
+          {
+            "id": "D-1",
+            "run": "RB",
+            "range": [
+              1250,
+              1500
+            ],
+            "claimedAt": "2026-11-04T09:00:00+08:00"
+          },
+          {
+            "id": "D-2",
+            "run": "RX",
+            "range": [
+              0,
+              500
+            ],
+            "claimedAt": null
+          }
+        ],
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      }
+    ],
+    [
+      {
+        "path": "/network",
+        "body": {
+          "axes": [
+            {
+              "edition": "A",
+              "from": "2026-09-01",
+              "to": "2026-11-02",
+              "road": "N7",
+              "branch": "干线",
+              "direction": "上行",
+              "run": "RA",
+              "anchors": [
+                [
+                  11000,
+                  0
+                ],
+                [
+                  12000,
+                  1000
+                ],
+                [
+                  12500,
+                  1500
+                ]
+              ],
+              "control": [
+                "a0",
+                "a1"
+              ]
+            },
+            {
+              "edition": "B",
+              "from": "2026-11-02",
+              "road": "N7",
+              "branch": "干线",
+              "direction": "上行",
+              "run": "RB",
+              "anchors": [
+                [
+                  11000,
+                  0
+                ],
+                [
+                  12500,
+                  1500
+                ]
+              ],
+              "control": [
+                "b0",
+                "b1"
+              ]
+            },
+            {
+              "edition": "B",
+              "from": "2026-11-02",
+              "road": "N7",
+              "branch": "联络线",
+              "direction": "上行",
+              "run": "RX",
+              "anchors": [
+                [
+                  12000,
+                  0
+                ],
+                [
+                  12500,
+                  500
+                ]
+              ],
+              "control": [
+                "x0",
+                "x1"
+              ]
+            },
+            {
+              "edition": "B",
+              "from": "2026-11-02",
+              "road": "N7",
+              "branch": "干线",
+              "direction": "下行",
+              "run": "RL",
+              "anchors": [
+                [
+                  12000,
+                  1000
+                ],
+                [
+                  12500,
+                  500
+                ]
+              ],
+              "control": [
+                "l0",
+                "l1"
+              ]
+            }
+          ],
+          "carry": [
+            {
+              "declaration": "M1",
+              "revision": 2,
+              "oldRun": "RA",
+              "old": [
+                0,
+                1000
+              ],
+              "newRun": "RB",
+              "new": [
+                0,
+                1000
+              ]
+            },
+            {
+              "declaration": "M2",
+              "revision": 1,
+              "oldRun": "RA",
+              "old": [
+                1000,
+                1250
+              ],
+              "candidates": [
+                {
+                  "newRun": "RB",
+                  "new": [
+                    1000,
+                    1250
+                  ]
+                },
+                {
+                  "newRun": "RX",
+                  "new": [
+                    0,
+                    250
+                  ]
+                }
+              ]
+            }
+          ],
+          "surveyRequired": [
+            {
+              "run": "RB",
+              "range": [
+                0,
+                1500
+              ]
+            },
+            {
+              "run": "RX",
+              "range": [
+                0,
+                500
+              ]
+            },
+            {
+              "run": "RL",
+              "range": [
+                500,
+                1000
+              ]
+            }
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/uploads",
+        "body": {
+          "parts": [
+            "/vehicle/12/a",
+            "/vehicle/12/b",
+            "/vehicle/12/c",
+            "/vehicle/12/d",
+            "/vehicle/12/e",
+            "/vehicle/12/f"
+          ],
+          "openBoots": [
+            "s9"
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/vehicle/12/d",
+        "body": {
+          "vehicle": "12",
+          "boot": "s8",
+          "seq": 1,
+          "kind": "position",
+          "controls": [
+            "b0",
+            "b1"
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/vehicle/12/e",
+        "body": {
+          "vehicle": "12",
+          "boot": "s9",
+          "seq": 1,
+          "kind": "measure",
+          "date": "2026-11-04",
+          "edition": "B",
+          "direction": "上行",
+          "runHint": "RB",
+          "chainage": [
+            11950,
+            12300
+          ],
+          "breaks": []
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/vehicle/12/f",
+        "body": {
+          "vehicle": "12",
+          "boot": "s9",
+          "seq": 1,
+          "kind": "position",
+          "controls": [
+            "b1",
+            "x0"
+          ],
+          "breaksObserved": true
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      },
+      {
+        "path": "/network/publication",
+        "body": {
+          "current": "B",
+          "closedBoots": [
+            "s7",
+            "s8"
+          ],
+          "openBoots": [
+            "s9"
+          ],
+          "segments": [
+            "RB",
+            "RX",
+            "RL"
+          ]
+        },
+        "status": 200,
+        "method": "GET",
+        "request": null,
+        "headers": {}
+      }
+    ]
+  ],
+  "assets": {}
+}
