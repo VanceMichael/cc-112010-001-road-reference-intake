@@ -452,6 +452,16 @@
               "issuer": "river",
               "purpose": "道路救援",
               "markerKm": 20.5,
+              "action": "retire",
+              "replacementCode": null
+            },
+            {
+              "binding": "B1-hill-K20",
+              "point": "P-21",
+              "code": "K20",
+              "issuer": "hill",
+              "purpose": "道路救援",
+              "markerKm": 20.7,
               "action": "bind",
               "replacementCode": null
             }
